@@ -1,0 +1,122 @@
+{% extends 'tienda/main.html' %}
+{% load static %}
+{% block content %}
+  <main>
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+          {% comment %} user data {% endcomment %}
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Información personal</h5>
+                <hr>
+                <form action="" method="">
+                  <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-lg-6">
+                      <h6><strong>Usuario:</strong> {{ user.username }}</h6>
+                    </div>
+                    <div class="col-lg-6">
+                      <h6><strong>Nombre:</strong> {% if user.second_name is not None %}{{ user.second_name }}{% endif %}</h6>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-lg-6">
+                      <h6><strong>Apellido:</strong> {% if user.second_last_name is not None %}{{ user.second_last_name }}{% endif %}</h6>
+                    </div>
+                    <div class="col-lg-6">
+                      <h6><strong>Email:</strong> {{ user.email }}</h6>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-lg-6">
+                      <h6><strong>Telefono:</strong> {% if user.phone is not None %}{{ user.phone }}{% endif %}</h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-success" type="button">Confirmar compra</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          {% comment %} cart data {% endcomment %}
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Orden de compra</h5>
+                <hr>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Item</th>
+                      <th>Precio</th>
+                      <th>Cantidad</th>
+                      <th>SubTotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    {% for item in items %}
+
+                    <tr>
+                      {% if item.product.imageURL == '' %}
+                      <th><img style="width: 2rem;" src="{% static "logo/shop-cart.png" %}"/></th>
+                      {% else %}
+                      <th><img style="width: 4rem;" src="{{ item.product.imageURL }}"/></th>
+                      {% endif %}
+                      <th>{{ item.product.product_name }}</th>
+                    <th>$ {{ item.product.product_value }}</th>
+                    <th>{{ item.quantity}}</th>
+                    <th>$ {{ item.get_total }}</th>
+                    </tr>
+
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+                <hr>
+                <div class="row">
+                  <div class="col">
+                    <h5>Items: <strong>{{ invoice.get_item_total }}</strong></h5>
+                    <h5>Total: <strong>$ {{ invoice.get_cart_total }}</strong></h5>
+                  </div>
+                  <div class="col text-center">
+                    <buttton class="btn btn-outline-success" id="comprar">Comprar</buttton>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    document.getElementById("comprar").addEventListener('click', function(e){
+      comprar()
+    })
+
+    function comprar(){
+      var url = '/cliente/processOrder/';
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        }
+      }).then(function(res){ res.json() })
+      .then(function(data){
+        console.log("success: ", data)
+        alert('Transacción completada')
+        window.location.href = "{% url 'store' %}"
+      }).catch(e => console.error(e))
+    }
+
+  </script>
+{% endblock %}

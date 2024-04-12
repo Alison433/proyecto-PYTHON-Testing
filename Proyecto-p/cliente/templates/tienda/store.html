@@ -1,0 +1,34 @@
+{% extends "tienda/main.html" %}
+{% load static %}
+{% block content %}
+
+<main>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% comment %} Cuerpo de la tarjeta {% endcomment %}
+        {% for item in products  %}
+        <div class="col-lg-4" style="margin-bottom: 20px;">
+          <div class="card" style="width: 18rem;">
+            {% if item.imageURL == '' %}
+            <img src="{%  static "logo/shop-cart.png" %}" class="card-img-top" style="padding: 50px;">
+            {% else %}
+            <img src="{{ item.imageURL }}" class="card-img-top" style="padding: 50px;">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ item.product_name }}</h5>
+              <p class="card-text">{{ item.product_description }}</p>
+              <h4>$ {{ item.product_value }} </h4>
+              <button data-producto={{ item.id }} data-action="add" class="btn btn-outline-secondary update-cart" style="margin-top: 10px;">
+                <i class="fa fa-shopping-cart"></i> Agregar al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}
