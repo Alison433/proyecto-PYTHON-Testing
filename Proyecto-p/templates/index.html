@@ -1,0 +1,548 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IQO</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logoIQO.png' %}">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    :root{
+      --main-c:#cadffb;
+      --border-r:.2rem;
+    }
+    
+    /** Estilos Generales **/
+    
+    html *{
+     margin: 0; 
+     padding: 0;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    p{
+      font-size: 1.1rem;
+    }
+    
+    a{
+      text-decoration: none;
+    }
+    
+    ul, li{
+      list-style: none;
+    }
+    
+    .wrap-cta{
+      padding: 1.5rem 0;
+    }
+    
+    .cta-a{
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+      background-color: var(--main-c);
+      padding: .5rem 1rem;
+      border-radius: var(--border-r);
+    }
+    
+    h1{
+      font-size: 2.8rem;
+    }
+    h2{
+      font-size: 2.5rem;
+    }
+    h3{
+      font-size: 2.2rem;
+    }
+    
+    /** Header **/
+    
+    .header-landing {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ffffff;
+  }
+  
+  .wrap-buttons {
+      display: flex;
+  }
+  
+  .btn-custom {
+      margin-right: 10px; /* Ajusta el margen entre los botones si es necesario */
+  }
+    
+    .logo-header{
+      max-width: 35px;
+      height: 100%;
+      width: 100%;
+    }
+    
+    /** Hero Section **/
+    
+    .hero-section {
+      height: 90vh;
+      background: url(img/img-hero-agencia.webp);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #2d2c55; /* Cambio de color de fondo */
+      background-blend-mode: multiply;
+      display: flex;
+      align-items: center;
+  }
+  
+    
+    .wrap-hero-section{
+      max-width: 600px;
+      color: #fff;
+      padding: 15%;
+    }
+    
+    /** Logo Brand Section **/
+    .secetion{
+      margin: 5rem 0;
+    }
+    
+    .section h2{
+      padding: 2rem 0;
+    }
+    
+    .wrap-logos-section{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .logo-brand{
+      width: 200px;
+      padding: 1rem 2rem;
+      filter: grayscale(1);
+    }
+    
+    /** Wrap Title **/
+    
+    .wrap-title-section{
+      display: flex;
+      justify-content: center;
+      margin: 3rem 1rem;
+    }
+    
+    /** Servicios Section **/
+    
+    .wrap-servicios-section{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+    }
+    
+    .item-servicios-section{
+      padding: 1rem;
+    }
+    
+    .item-servicios-section img{
+      width: 300px;
+      height: 225px;
+    }
+    
+    /** Two Columns Section **/
+    
+    .wrap-two-column{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .wrap-img_two-column{
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+    }
+    
+    .wrap-text-column h3{
+      padding: 2rem 0;
+    }
+    
+    .wrap-text-column p{
+      padding-bottom: 1rem;
+    }
+    
+    /** Form Section **/
+    
+    section.two-column-section.form{
+      background-color: #f2f2f2;
+      padding: 3rem 0;
+    }
+    
+    .form input, .form textarea{
+      display: flex;
+      width: 100%;
+      line-height: 1.75rem;
+      border: 1.5px solid #fff;
+      border-radius: var(--border-r);
+    }
+    
+    .form textarea{
+      min-height: 200px;
+    }
+    
+    input[type="submit"]{
+      border: 0;
+      display: inline;
+      cursor: pointer;
+    }
+    
+    /** Footer **/
+    
+    .footer-section{
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .menu-footer-section{
+      padding: 1rem 0;
+    }
+    
+    .wrap-social-logos ul, .wrap-menu-footer-section ul{
+      display: flex;
+      justify-content: center;
+    }
+    
+    .social-logo{
+      max-width: 75px;
+      width: 100%;
+      padding: 1rem;
+    }
+    
+    .wrap-menu-footer-section ul li{
+      font-size: 1.1rem;
+      padding: 1.5rem;
+    }
+    
+    .footer-creds{
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-custom {
+      background-color: #007bff; /* Color de fondo */
+      color: #fff; /* Color del texto */
+      border: none; /* Sin borde */
+      border-radius: 5px; /* Borde redondeado */
+      padding: 10px 20px; /* Relleno */
+      font-size: 16px; /* Tamaño de fuente */
+      transition: all 0.3s ease; /* Transición suave */
+  }
+  
+  .btn-custom:hover {
+      background-color: #0056b3; /* Cambio de color de fondo al pasar el ratón */
+  }
+
+  .cta-a-black {
+    color: black; /* Cambia el color del texto a negro */
+}
+
+.btn-white {
+  background-color: #ffffff; /* Color de fondo blanco */
+  color: #000000; /* Color del texto (en este caso, negro) */
+  /* Agrega cualquier otro estilo adicional según sea necesario */
+}
+  </style>
+</head>
+<body>
+  
+  <header class="header-landing">
+    <div class="wrap-logo">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'images/logoIQO.png' %}" alt="logoRTC" width="100px">
+        </a>
+    </div>
+    <div class="wrap-buttons">
+        <a class="nav-link active" aria-current="page" href="{% url 'quienessomos' %}">
+          <button class="btn btn-white btn-custom"><i class="fa-solid fa-cloud-question fa-lg"></i>Contactenos</button>
+        </a>
+        <a class="nav-link active" aria-current="page" href="{% url 'login' %}">
+            <button class="btn btn-primary btn-custom"><i class="fas fa-user fa-lg"></i>Iniciar Sesión</button>
+        </a>
+    </div>
+</header>
+
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <section class="hero-section">
+              <div class="wrap-hero-section">
+                  <h1>Bienvenido a CONTROL Y SEGURIDAD S.A.S</h1>
+                  <p>Te podemos ayudar a conseguir la mejor seguridad para tu hogar, tu empresa, etc...</p>
+                  <p>¿No tienes cuenta? - Regístrate <a href="{% url 'registro' %}" class="cta-a cta-a-black">Regístrate</a></p>
+                 
+              </div> <div class="col-md-6">
+                <img src="images/mara3.jpg" alt="Descripción de la imagen" class="img-fluid">
+            </div>
+          </section>
+      </div>
+   
+  </div>
+</div>
+  <section class="section logos-section">
+    <div class="wrap-logos-section">
+      <img src="img/logo-Google.png" alt="" class="logo-brand">
+      <img src="img/ikea-logo.jpg" alt="" class="logo-brand">
+      <img src="img/mercedes-logo.svg" alt="" class="logo-brand">
+      <img src="img/Apple-logo.svg" alt="" class="logo-brand">
+      <img src="img/zara-logo.jpg" alt="" class="logo-brand">
+    </div>
+  </section>
+
+  <section class="section servicios-section">
+    <div class="wrap-title-section">
+      <h2>Productos y Servicios</h2>
+    </div>
+
+    <div class="wrap-servicios-section">
+      <a href="" class="item-servicios-section">
+        <img src="images/camara1.png" alt="">
+          <p>Cámaras</p>
+        </img>
+      </a>
+      <a href="" class="item-servicios-section">
+        <img src="images/discosduros.jpg" alt="">
+          <p>Discos Duros</p>
+        </img>
+      </a>
+      <a href="" class="item-servicios-section">
+        <img src="images/dvr1.png" alt="">
+          <p>DVR</p>
+        </img>
+      </a>
+      <a href="" class="item-servicios-section">
+        <img src="images/fuentes1.png" alt="">
+          <p>Fuentes</p>
+        </img>
+      </a>
+      <a href="" class="item-servicios-section">
+        <img src="images/ups1.jpg" alt="">
+          <p>UPS</p>
+        </img>
+      </a>
+      <a href="" class="item-servicios-section">
+        <img src="images/serviciostecnicos.jpg" alt="">
+          <p>Servicios Técnicos</p>
+        </img>
+      </a>
+      <a href="" class="item-servicios-section">
+        <img src="images/mantenimiento.jpg" alt="">
+          <p>Mantenimiento</p>
+        </img>
+      </a>
+      
+    </div>
+  </section>
+
+  <section class="section two-column-section">
+
+    <div class="wrap-title-section">
+      <h2>Características de nuestros Servicios</h2>
+    </div>
+
+    <div class="wrap-two-column">
+      <div class="wrap-img_two-column">
+        <img src="images/mascamaras.png" alt="">
+      </div>
+
+      <div class="wrap-img_two-column">
+        <div class="wrap-text-column">
+          <h3>Más Características</h3>
+          <p>Nos encargamos de que tu empresa, oficina u hogar esten completamente protegidos con los mejores productos incluyendo mantenimientos y servicios técnicos según se requiera</p>
+          <div class="wrap-cta">
+            <p><a href="{% url 'registro' %}" class="cta-a cta-a-black">Regístrate</a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section two-column-section form">
+
+    <div class="wrap-title-section">
+      <h2>¿Quienes somos?</h2>
+    </div>
+
+    <div class="wrap-two-column">
+
+      <div class="wrap-img_two-column">
+        <div class="wrap-text-column">
+          <h3>Visión</h3>
+          <p>
+          "Ser líderes en la provisión de soluciones integrales de seguridad, ofreciendo productos y servicios innovadores y de alta calidad que garanticen la tranquilidad y protección de nuestros clientes. Buscamos ser reconocidos como la referencia en el sector, destacándonos por nuestra excelencia en el servicio al cliente, nuestro compromiso con la seguridad y nuestra constante adaptación a las nuevas tecnologías y tendencias del mercado."
+
+          Esta visión refleja el deseo de la empresa de destacarse como líder en el campo de la seguridad, ofreciendo productos y servicios de calidad que satisfagan las necesidades de sus clientes y les brinden tranquilidad y protección. También enfatiza la importancia del servicio al cliente, el compromiso con la seguridad y la innovación tecnológica como pilares fundamentales de su actividad empresarial.
+        </p>
+        </div>
+      </div>
+
+      <div class="wrap-img_two-column">
+        <div class="column">
+          <h3>Misión</h3>
+          <p>"Nuestra misión es proporcionar soluciones integrales de seguridad a nuestros clientes, ofreciendo una amplia gama de productos y servicios de alta calidad que se adapten a sus necesidades específicas. Nos comprometemos a brindar un servicio excepcional, asesoramiento experto y atención personalizada para garantizar la satisfacción y confianza de nuestros clientes en todo momento. Buscamos contribuir al bienestar y la protección de la comunidad, promoviendo un entorno seguro y tranquilo mediante la implementación de tecnologías avanzadas y prácticas innovadoras en el campo de la seguridad."</p>
+          
+        </div>
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    <div class="wrap-footer-section">
+      <div class="wrap-social-logos">
+        <ul>
+          <li>
+            <a href="">
+              <img src="images/facebook.png" alt="" class="social-logo">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/instagram.png" alt="" class="social-logo">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/twitter.png" alt="" class="social-logo">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/whatsapp.png" alt="" class="social-logo">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+   
+
+  </section>
+  <section class="section reportes-ventas">
+    <div class="wrap-title-section">
+        <h2>Reportes de Ventas</h2>
+    </div>
+    <div class="wrap-graficos-ventas">
+      <canvas id="grafico-ventas" width="800" height="400"></canvas>
+  </div>
+    <!-- Aquí es donde se mostrarán los gráficos de ventas -->
+</section>
+
+  <footer>
+    &copy; 2024 IQO - Inventories & Quick Organization
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // Datos de ejemplo para simular ventas por mes
+      const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
+      const ventas = [1000, 1200, 1500, 1800, 2000, 2200];
+
+      // Configuración del gráfico
+      const config = {
+          type: 'line',
+          data: {
+              labels: meses,
+              datasets: [{
+                  label: 'Ventas',
+                  data: ventas,
+                  fill: false,
+                  borderColor: 'rgb(75, 192, 192)',
+                  tension: 0.1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      };
+
+      // Obtener el contexto del lienzo
+      const ctx = document.getElementById('grafico-ventas').getContext('2d');
+
+      // Crear el gráfico de ventas
+      const graficoVentas = new Chart(ctx, config);
+  });
+</script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      
+      fetch('/ventas-anuales/')
+          .then(response => response.json())
+          .then(data => {
+             
+              renderizarGraficosVentas(data);
+          });
+  });
+
+  function renderizarGraficosVentas(data) {
+   
+      var ctx = document.getElementById('grafico-ventas').getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: data.labels,
+              datasets: [{
+                  label: 'Ventas',
+                  data: data.ventas,
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+           
+          }
+      });
+  }
+</script>
+
+<script>
+  
+    (() => {
+      'use strict'
+
+
+      const forms = document.querySelectorAll('.needs-validation')
+
+
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
+  <script src="https://pro.fontawesome.com/releases/v6.0.0-beta3/js/all.js" integrity="tu-integridad" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</body>
+</html>
+
+
+
